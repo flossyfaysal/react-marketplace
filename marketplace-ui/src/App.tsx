@@ -1,13 +1,29 @@
 import { Grid, GridItem } from '@chakra-ui/react'
 import './App.css'
-import ItemList from './components/ItemList'
+import ProductList from './components/ProductList'
+import CategoryList from './components/CategoryList'
 
 function App() {
 
   return (
-    <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-      <GridItem w='100%' h='10' bg='blue.500'>
-        <ItemList />
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`
+      }}
+      templateColumns='repeat(200px, 1fr)' gap={5}>
+      <GridItem area={"nav"}>
+        <nav>
+          <ul>
+            <li>Hi</li>
+          </ul>
+        </nav>
+      </GridItem>
+      <GridItem area={"aside"}>
+        <CategoryList />
+      </GridItem>
+      <GridItem area={"main"}>
+        <ProductList />
       </GridItem>
     </Grid>
   )
